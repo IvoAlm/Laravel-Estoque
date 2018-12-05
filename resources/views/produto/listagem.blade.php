@@ -21,6 +21,7 @@
                     </a>
                 </td>
             </tr>
+
                 @endforeach
         </table>
     @endif

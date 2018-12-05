@@ -9,34 +9,36 @@ use Request;
 
 
 class ProdutoController extends Controller {
+
+
+
     public function lista(){
 
-        $produtos = DB::select('select * from produtos');
-
+        $produtos = Produto::all();
         return view('produto.listagem')->with('produtos',$produtos);
     }
+
+
     public function mostra($id){
 
-        $resposta = DB::select('select * from produtos where id = ?', [$id]);
-
-        if (empty($resposta)){
+        $produtos = Produto::find($id);
+        if (empty($produtos)){
             return 'Esse produto não existe.';
         }
-
-        return view('produto.detalhes')->with('p',$resposta[0]);
+        return view('produto.detalhes')->with('p',$produtos);
     }
+
+
     public function novo(){
         return view('produto.formulario');
     }
+
+
     public function adiciona(){
-        $nome = Request::input('nome');
-        $descricao = Request::input('descricao');
-        $valor = Request::input('valor');
-        $quantidade = Request::input('quantidade');
 
-        DB::insert('insert into produtos (nome, valor, descricao, quantidade) value(?,?,?,?)',
-        array($nome, $valor, $descricao, $quantidade));
-
-        return redirect('/produtos')->withInput(Request::only('nome'));
+        Produto::create(Request::all());
+        return redirect()
+            ->action('ProdutoController@lista')
+            ->withInput(Request::only('nome'));
     }
 }
