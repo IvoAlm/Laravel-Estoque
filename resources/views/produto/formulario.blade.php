@@ -2,6 +2,7 @@
 
 
 @section('conteudo')
+
     <h1>Novo produto</h1>
     <form action="/produtos/adiciona" method="post">
 

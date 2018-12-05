@@ -4,7 +4,7 @@
 
     <div class="alert alert-success">
 
-    <strong>Sucesso!!!!</strong>O produto {{$nome}} foi adicionado com sucesso!!
+    <strong>Sucesso!!!!</strong>O produto {{old($nome)}} foi adicionado com sucesso!!
 
     </div>
 @stop
