@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 use App\Produto;
 use Request;
+use App\Http\Requests\ProdutosRequest;
 
 
 
@@ -34,9 +35,10 @@ class ProdutoController extends Controller {
     }
 
 
-    public function adiciona(){
+    public function adiciona(ProdutosRequest $request){
 
-        Produto::create(Request::all());
+        Produto::create($request->all());
+
         return redirect()
             ->action('ProdutoController@lista')
             ->withInput(Request::only('nome'));
