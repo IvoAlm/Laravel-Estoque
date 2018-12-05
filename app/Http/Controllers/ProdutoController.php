@@ -41,4 +41,13 @@ class ProdutoController extends Controller {
             ->action('ProdutoController@lista')
             ->withInput(Request::only('nome'));
     }
+
+
+    public function remove($id){
+
+        $produto = Produto::find($id);
+        $produto->delete();
+        return redirect()
+            ->action('ProdutoController@lista');
+    }
 }
