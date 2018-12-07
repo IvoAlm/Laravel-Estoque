@@ -6,6 +6,7 @@ use Illuminate\View\View;
 use App\Produto;
 use Request;
 use App\Http\Requests\ProdutosRequest;
+use Illuminate\Auth;
 
 
 
@@ -52,4 +53,5 @@ class ProdutoController extends Controller {
         return redirect()
             ->action('ProdutoController@lista');
     }
+
 }

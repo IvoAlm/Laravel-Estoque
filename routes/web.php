@@ -19,7 +19,7 @@ Route::post('/produtos/adiciona','ProdutoController@adiciona');
 Route::get('/produtos/remove/{id}', 'ProdutoController@remove');
 
 Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'ProdutoController@lista')->name('home');
 Route::prefix('admin')->middleware('auth')->namespace('Admin')->group(function(){
     Route::resource('meu-controlador', 'MeuControladorController');
 });
